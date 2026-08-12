@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://lkiagv73ipx6"]
+
+[ext_resource type="Script" uid="uid://dq2412l4v4m0q" path="res://game.gd" id="1_u44n3"]
+[ext_resource type="Script" uid="uid://dfc6k5fc8uvdv" path="res://player.gd" id="1_wbfu4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qef7r"]
+size = Vector2(50, 50)
+
+[node name="Game" type="Node2D" unique_id=1342184699]
+script = ExtResource("1_u44n3")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1162768428]
+position = Vector2(500, 500)
+script = ExtResource("1_wbfu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=208401725]
+shape = SubResource("RectangleShape2D_qef7r")
+
+[node name="Polygon2D" type="Polygon2D" parent="Player" unique_id=1675448635]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=984079436]
+process_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=642196843]
+visible = false
+offset_left = 230.0
+offset_top = 250.0
+offset_right = 470.0
+offset_bottom = 273.0
+text = "GAME OVER!"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=638085310]
+visible = false
+offset_left = 250.0
+offset_top = 320.0
+offset_right = 325.0
+offset_bottom = 351.0
+text = "RESTART"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=2010875125]
+offset_right = 61.0
+offset_bottom = 23.0
+text = "Score: 0"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
